@@ -32,7 +32,8 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
   const login = mode === 'login';
   return (
     <KeyboardAvoidingView style={{ flex: 1, backgroundColor: colors.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: 24, gap: 14 }} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', padding: 24 }} keyboardShouldPersistTaps="handled">
+        <View style={{ width: '100%', maxWidth: 420, gap: 14 }}>
         <View style={{ alignItems: 'center', marginBottom: 8, gap: 14 }}>
           <Orb size={120} />
           <T w="sb" size={30} style={{ textAlign: 'center', lineHeight: 42 }}>
@@ -63,6 +64,7 @@ export function AuthForm({ mode }: { mode: 'login' | 'signup' }) {
             {login ? 'ยังไม่มีบัญชี? สมัครสมาชิก' : 'มีบัญชีแล้ว? เข้าสู่ระบบ'}
           </T>
         </Link>
+        </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );

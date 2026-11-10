@@ -6,7 +6,7 @@ import { colors, fonts, shadow } from '../../lib/theme';
 type IconName = React.ComponentProps<typeof Ionicons>['name'];
 
 function TabIcon({ active, idle, focused, color, size }: { active: IconName; idle: IconName; focused: boolean; color: ColorValue; size: number }) {
-  return <Ionicons name={focused ? active : idle} size={size} color={color} />;
+  return <Ionicons name={focused ? active : idle} size={size} color={typeof color === 'string' ? color : undefined} />;
 }
 
 const icon =

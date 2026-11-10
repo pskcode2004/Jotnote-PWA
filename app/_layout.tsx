@@ -28,20 +28,22 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <View style={{ flex: 1, alignItems: 'center', backgroundColor: colors.bg }}>
       <StatusBar style="dark" />
-      <Stack
-        screenOptions={{
-          contentStyle: { backgroundColor: colors.bg },
-          headerStyle: { backgroundColor: colors.bg },
-          headerShadowVisible: false,
-          headerTintColor: colors.navy,
-          headerTitleStyle: { fontFamily: fonts.sb, fontSize: 17 },
-        }}>
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="note/[id]" options={{ title: 'โน้ต', headerBackTitle: 'กลับ' }} />
-      </Stack>
-    </>
+      <View style={{ flex: 1, width: '100%', maxWidth: 720 }}>
+        <Stack
+          screenOptions={{
+            contentStyle: { backgroundColor: colors.bg },
+            headerStyle: { backgroundColor: colors.bg },
+            headerShadowVisible: false,
+            headerTintColor: colors.navy,
+            headerTitleStyle: { fontFamily: fonts.sb, fontSize: 17 },
+          }}>
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="note/[id]" options={{ title: 'โน้ต', headerBackTitle: 'กลับ' }} />
+        </Stack>
+      </View>
+    </View>
   );
 }
