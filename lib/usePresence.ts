@@ -18,7 +18,8 @@ export function usePresence(noteId: string, me: Present | null): Present[] {
             .filter(Boolean)
         );
       })
-      .subscribe(async (status) => {
+      .subscribe(async (status, err) => {
+        console.log('[rt] presence channel', status, err?.message ?? '');
         if (status === 'SUBSCRIBED') await channel.track({ id: me.id, name: me.name });
       });
     return () => {

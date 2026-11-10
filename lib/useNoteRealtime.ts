@@ -21,6 +21,7 @@ export function useNoteRealtime(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'blocks', filter: `note_id=eq.${noteId}` },
         (p: any) => {
+          console.log('[rt] blocks event', p.eventType, (p.new ?? p.old)?.id, 'by', p.new?.updated_by);
           const row = (p.eventType === 'DELETE' ? p.old : p.new) as Block;
           changeRef.current({ type: p.eventType, row });
         }
@@ -30,7 +31,7 @@ export function useNoteRealtime(
         { event: 'DELETE', schema: 'public', table: 'notes', filter: `id=eq.${noteId}` },
         () => goneRef.current()
       )
-      .subscribe();
+      .subscribe((status, err) => console.log('[rt] blocks channel', status, err?.message ?? ''));
     return () => {
       supabase.removeChannel(channel);
     };
